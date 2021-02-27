@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace ListaZakupow.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    [Route("api/[controller]")]
+    public class WeatherForecastController : Controller
     {
         private static readonly string[] Summaries = new[]
         {
@@ -24,7 +24,7 @@ namespace ListaZakupow.Server.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
@@ -36,5 +36,20 @@ namespace ListaZakupow.Server.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("[action]")]
+        public WeatherForecast GetAll()
+        {
+
+            return new WeatherForecast
+            {
+                Date = DateTime.Now,
+                TemperatureC = 20,
+                Summary = Summaries[200]
+            };
+            
+        }
+
+
     }
 }

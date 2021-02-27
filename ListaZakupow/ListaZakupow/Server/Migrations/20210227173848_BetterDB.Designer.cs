@@ -4,14 +4,16 @@ using ListaZakupow.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ListaZakupow.Server.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210227173848_BetterDB")]
+    partial class BetterDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,15 +245,10 @@ namespace ListaZakupow.Server.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("ToWhen")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductPrice");
                 });
@@ -408,13 +405,6 @@ namespace ListaZakupow.Server.Migrations
                         .HasForeignKey("ProductId");
                 });
 
-            modelBuilder.Entity("ListaZakupow.Model.ProductPrice", b =>
-                {
-                    b.HasOne("ListaZakupow.Model.Product", null)
-                        .WithMany("ProductPrices")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("ListaZakupow.Model.ProductType", b =>
                 {
                     b.HasOne("ListaZakupow.Model.Product", null)
@@ -462,8 +452,6 @@ namespace ListaZakupow.Server.Migrations
                     b.Navigation("PhotosGallery");
 
                     b.Navigation("ProductOrders");
-
-                    b.Navigation("ProductPrices");
 
                     b.Navigation("ProductsCategory");
 

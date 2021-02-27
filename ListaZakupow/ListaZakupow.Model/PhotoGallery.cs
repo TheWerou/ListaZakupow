@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ListaZakupow.Server.Models
+namespace ListaZakupow.Model
 {
     public class PhotoGallery
     {

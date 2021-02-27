@@ -22,12 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ListaZakupow.Model\ListaZakupow.Model.csproj" />
     <ProjectReference Include="..\Client\ListaZakupow.Client.csproj" />
     <ProjectReference Include="..\Shared\ListaZakupow.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Dto\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
