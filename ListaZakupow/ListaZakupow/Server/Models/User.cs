@@ -17,5 +17,7 @@ namespace ListaZakupow.Server.Models
 
         public ICollection<Product> Products { get; set; }
 
+        public ICollection<ShopingList> ShopingLists { get; set; }
+
     }
 }

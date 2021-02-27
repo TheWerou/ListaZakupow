@@ -19,6 +19,29 @@ namespace ListaZakupow.Server.Migrations
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ListaZakupow.Server.Models.PhotoGallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Image")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("PhotoGallery");
+                });
+
             modelBuilder.Entity("ListaZakupow.Server.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -125,6 +148,13 @@ namespace ListaZakupow.Server.Migrations
                     b.ToTable("ProductShopingList");
                 });
 
+            modelBuilder.Entity("ListaZakupow.Server.Models.PhotoGallery", b =>
+                {
+                    b.HasOne("ListaZakupow.Server.Models.Product", null)
+                        .WithMany("PhotosGallery")
+                        .HasForeignKey("ProductId");
+                });
+
             modelBuilder.Entity("ListaZakupow.Server.Models.Product", b =>
                 {
                     b.HasOne("ListaZakupow.Server.Models.User", null)
@@ -156,6 +186,8 @@ namespace ListaZakupow.Server.Migrations
 
             modelBuilder.Entity("ListaZakupow.Server.Models.Product", b =>
                 {
+                    b.Navigation("PhotosGallery");
+
                     b.Navigation("ProductsCategory");
                 });
 

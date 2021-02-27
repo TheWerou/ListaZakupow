@@ -15,6 +15,8 @@ namespace ListaZakupow.Server.Models
 
         public ICollection<ProductCategory> ProductsCategory { get; set; }
 
+        public ICollection<PhotoGallery> PhotosGallery { get; set; }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
